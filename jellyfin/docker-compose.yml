@@ -8,6 +8,7 @@ services:
       - PGID=1000
       - TZ=Asia/Kuching
       - JELLYFIN_PublishedServerUrl=http://192.168.0.5 #optional
+      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - /home/itm154/.docker/jellyfin/config:/config
       - /home/itm154/.docker/jellyfin/cache:/cache
@@ -19,6 +20,14 @@ services:
       - 1900:1900/udp
     networks:
       - web-proxy
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 networks:
   web-proxy:
     external: true
