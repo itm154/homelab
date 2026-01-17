@@ -1,0 +1,33 @@
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    # ports:
+    #   - 8989:8989
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /home/itm154/.docker/sonarr/config:/config
+      - /home/itm154/.data/:/data
+    networks:
+      - web-proxy
+  prowlarr:
+    container_name: prowlarr
+    image: lscr.io/linuxserver/prowlarr:latest
+    restart: unless-stopped
+    # ports:
+    #   - 9696:9696
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kuching
+    volumes:
+      - /home/itm154/.docker/prowlarr/config:/config
+    networks:
+      - web-proxy
+networks:
+  web-proxy:
+    external: true
