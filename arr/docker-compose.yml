@@ -28,6 +28,21 @@ services:
       - /home/itm154/.docker/prowlarr/config:/config
     networks:
       - web-proxy
+  lidarr:
+    container_name: lidarr
+    image: lscr.io/linuxserver/lidarr:latest
+    restart: unless-stopped
+    # ports:
+    #   - 8686:8686
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kuching
+    volumes:
+      - /home/itm154/.docker/lidarr/config:/config
+      - /home/itm154/.data/:/data
+    networks:
+      - web-proxy
 networks:
   web-proxy:
     external: true
