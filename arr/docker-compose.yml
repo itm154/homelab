@@ -14,6 +14,21 @@ services:
       - /home/itm154/.data/:/data
     networks:
       - web-proxy
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    # ports:
+    #   - 7878:7878
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kuching
+    volumes:
+      - /home/itm154/.docker/radarr/config:/config
+      - /home/itm154/.data/:/data
+    networks:
+      - web-proxy
   prowlarr:
     container_name: prowlarr
     image: lscr.io/linuxserver/prowlarr:latest
