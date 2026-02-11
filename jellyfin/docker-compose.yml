@@ -12,7 +12,8 @@ services:
     volumes:
       - /home/itm154/.docker/jellyfin/config:/config
       - /home/itm154/.docker/jellyfin/cache:/cache
-      - /home/itm154/.data/media/videos:/data/videos
+      - /home/itm154/.data/media/tv/:/data/tv
+      - /home/itm154/.data/media/movies/:/data/movies
       - /home/itm154/.data/media/music:/data/music
     ports:
       - 8096:8096
