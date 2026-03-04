@@ -1,0 +1,15 @@
+services:
+  bentopdf:
+    container_name: bentopdf
+    image: ghcr.io/alam00000/bentopdf-simple:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+    restart: unless-stopped
+    # ports:
+    #   - '3000:8080'
+    networks:
+      - web-proxy
+networks:
+  web-proxy:
+    external: true
