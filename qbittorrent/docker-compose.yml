@@ -5,7 +5,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=Asia/Kuching
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
       - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
@@ -16,6 +16,20 @@ services:
       # - 8080:8080
       - 6881:6881
       - 6881:6881/udp
+    restart: unless-stopped
+    networks:
+      - web-proxy
+  qbitwebui:
+    image: ghcr.io/maciejonos/qbitwebui:latest
+    container_name: qbitwebui
+    ports:
+      - 3000:3000
+    volumes:
+      - /home/itm154/.docker/qbitwebui/data:/data
+      - /home/itm154/Downloads/Torrents:/downloads:ro
+    environment:
+      - ENCRYPTION_KEY=83fbfc59fa75644d28a9a6019906768c940be222ad4d01dcb42d4136033d9c67
+      - DOWNLOADS_PATH=/downloads
     restart: unless-stopped
     networks:
       - web-proxy
