@@ -1,0 +1,35 @@
+services:
+  fileflows:
+    container_name: fileflows
+    image: revenz/fileflows
+    restart: unless-stopped
+    runtime: nvidia
+    # ports:
+    # - "19200:5000"
+    devices:
+      - "/dev/dri:/dev/dri"
+    environment:
+      - TempPathHost=/home/itm154/.docker/fileflows/temp
+      - TZ=Asia/Kuching
+      - PUID=1000
+      - PGID=1000
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /home/itm154/.docker/fileflows/temp:/temp
+      - /home/itm154/.docker/fileflows/config:/app/Data
+      - /home/itm154/.docker/fileflows/logs:/app/Logs
+      - /home/itm154/.data/media:/media
+    networks:
+      - web-proxy
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+networks:
+  web-proxy:
+    external: true
