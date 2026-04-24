@@ -1,9 +1,10 @@
 services:
   fileflows:
     container_name: fileflows
-    image: revenz/fileflows
+    image: revenz/fileflows:stable
     restart: unless-stopped
     runtime: nvidia
+    build: .
     # ports:
     # - "19200:5000"
     devices:
