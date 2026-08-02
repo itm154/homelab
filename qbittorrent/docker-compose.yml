@@ -10,7 +10,7 @@ services:
       - TORRENTING_PORT=6881
       - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
     volumes:
-      - /home/itm154/.docker/qbittorrent/config:/config
+      - /home/itm154/.containers/qbittorrent/config:/config
       - /home/itm154/.data/torrents:/data/torrents
     ports:
       # - 8080:8080

@@ -13,7 +13,7 @@ services:
     devices:
       - "/dev/dri:/dev/dri"
     environment:
-      - TempPathHost=/home/itm154/.docker/fileflows/temp
+      - TempPathHost=/home/itm154/.containers/fileflows/temp
       - TZ=Asia/Kuching
       - PUID=1000
       - PGID=1000
@@ -21,9 +21,9 @@ services:
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /home/itm154/.docker/fileflows/temp:/temp
-      - /home/itm154/.docker/fileflows/config:/app/Data
-      - /home/itm154/.docker/fileflows/logs:/app/Logs
+      - /home/itm154/.containers/fileflows/temp:/temp
+      - /home/itm154/.containers/fileflows/config:/app/Data
+      - /home/itm154/.containers/fileflows/logs:/app/Logs
       - /home/itm154/.data/media:/media
     networks:
       - web-proxy

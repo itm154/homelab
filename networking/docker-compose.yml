@@ -10,7 +10,7 @@ services:
     environment:
       TZ: "Asia/Kuching"
     volumes:
-      - /home/itm154/.docker/nginx-proxy-manager/config:/data
+      - /home/itm154/.containers/nginx-proxy-manager/config:/data
       - ./letsencrypt:/etc/letsencrypt
     networks:
       - web-proxy
@@ -20,8 +20,8 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - /home/itm154/.docker/adguardhome/work:/opt/adguardhome/work
-      - /home/itm154/.docker/adguardhome/conf:/opt/adguardhome/conf
+      - /home/itm154/.containers/adguardhome/work:/opt/adguardhome/work
+      - /home/itm154/.containers/adguardhome/conf:/opt/adguardhome/conf
     environment:
       TZ: "Asia/Kuching"
 networks:

@@ -10,7 +10,7 @@ services:
       - PGID=1000
       - TZ=Asia/Kuching
     volumes:
-      - /home/itm154/.docker/sonarr/config:/config
+      - /home/itm154/.containers/sonarr/config:/config
       - /home/itm154/.data/:/data
     networks:
       - web-proxy
@@ -25,7 +25,7 @@ services:
       - PGID=1000
       - TZ=Asia/Kuching
     volumes:
-      - /home/itm154/.docker/radarr/config:/config
+      - /home/itm154/.containers/radarr/config:/config
       - /home/itm154/.data/:/data
     networks:
       - web-proxy
@@ -40,7 +40,7 @@ services:
       - PGID=1000
       - TZ=Asia/Kuching
     volumes:
-      - /home/itm154/.docker/prowlarr/config:/config
+      - /home/itm154/.containers/prowlarr/config:/config
     networks:
       - web-proxy
 networks:
