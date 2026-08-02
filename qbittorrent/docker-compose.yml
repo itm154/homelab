@@ -19,20 +19,6 @@ services:
     restart: unless-stopped
     networks:
       - web-proxy
-  qbitwebui:
-    image: ghcr.io/maciejonos/qbitwebui:latest
-    container_name: qbitwebui
-    ports:
-      - 3000:3000
-    volumes:
-      - /home/itm154/.docker/qbitwebui/data:/data
-      - /home/itm154/Downloads/Torrents:/downloads:ro
-    environment:
-      - ENCRYPTION_KEY=83fbfc59fa75644d28a9a6019906768c940be222ad4d01dcb42d4136033d9c67
-      - DOWNLOADS_PATH=/downloads
-    restart: unless-stopped
-    networks:
-      - web-proxy
 networks:
   web-proxy:
     external: true
