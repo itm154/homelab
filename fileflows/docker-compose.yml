@@ -4,9 +4,12 @@ services:
     image: revenz/fileflows:stable
     restart: unless-stopped
     runtime: nvidia
-    build: .
+    build:
+      context: .
+      args:
+        BASE_TAG: stable
     # ports:
-    # - "19200:5000"
+    #   - "19200:5000"
     devices:
       - "/dev/dri:/dev/dri"
     environment:
