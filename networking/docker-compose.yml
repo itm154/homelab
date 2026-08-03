@@ -14,16 +14,16 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     networks:
       - web-proxy
-  adguardhome:
-    container_name: adguardhome
-    image: 'adguard/adguardhome:latest'
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - /home/itm154/.containers/adguardhome/work:/opt/adguardhome/work
-      - /home/itm154/.containers/adguardhome/conf:/opt/adguardhome/conf
-    environment:
-      TZ: "Asia/Kuching"
+  # adguardhome:
+  #   container_name: adguardhome
+  #   image: 'adguard/adguardhome:latest'
+  #   restart: unless-stopped
+  #   network_mode: host
+  #   volumes:
+  #     - /home/itm154/.containers/adguardhome/work:/opt/adguardhome/work
+  #     - /home/itm154/.containers/adguardhome/conf:/opt/adguardhome/conf
+  #   environment:
+  #     TZ: "Asia/Kuching"
 networks:
   web-proxy:
     external: true
