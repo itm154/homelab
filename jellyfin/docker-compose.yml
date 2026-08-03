@@ -21,14 +21,8 @@ services:
       - 1900:1900/udp
     networks:
       - web-proxy
-    runtime: nvidia
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+    devices:
+      - nvidia.com/gpu=all
 networks:
   web-proxy:
     external: true

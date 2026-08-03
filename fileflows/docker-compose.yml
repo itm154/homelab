@@ -3,7 +3,6 @@ services:
     container_name: fileflows
     image: revenz/fileflows:stable
     restart: unless-stopped
-    runtime: nvidia
     build:
       context: .
       args:
@@ -11,7 +10,8 @@ services:
     # ports:
     #   - "19200:5000"
     devices:
-      - "/dev/dri:/dev/dri"
+      - /dev/dri:/dev/dri
+      - nvidia.com/gpu=all
     environment:
       - TempPathHost=/home/itm154/.containers/fileflows/temp
       - TZ=Asia/Kuching
@@ -27,13 +27,6 @@ services:
       - /home/itm154/.data/media:/media
     networks:
       - web-proxy
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
 networks:
   web-proxy:
     external: true
