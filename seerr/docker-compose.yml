@@ -6,7 +6,9 @@ services:
     environment:
       - LOG_LEVEL=debug
       - TZ=Asia/Tashkent
-      - PORT=5055 #optional
+      - PORT=5055
+      - PUID=1000
+      - PGID=1000
     ports:
       - 5055:5055
     volumes:
