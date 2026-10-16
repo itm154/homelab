@@ -14,7 +14,8 @@ COPY --from=patcher-builder /app/patcher /app/patcher
 
 # Run the patcher on target DLLs using the container's .NET runtime
 RUN dotnet /app/patcher/patcher.dll /app/Server/FileFlows.Services.dll && \
-    dotnet /app/patcher/patcher.dll /app/Node/FileFlows.Services.dll
+    if [ -f /app/Node/FileFlows.Services.dll ]; then dotnet /app/patcher/patcher.dll /app/Node/FileFlows.Services.dll; fi && \
+    if [ -f /app/Agent/FileFlows.Services.dll ]; then dotnet /app/patcher/patcher.dll /app/Agent/FileFlows.Services.dll; fi
 
 # Clean up the patcher tool to keep the image clean
 RUN rm -rf /app/patcher
