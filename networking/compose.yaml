@@ -1,0 +1,19 @@
+services:
+  nginx-proxy-manager:
+    container_name: nginx-proxy-manager
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81' # Admin Web Port
+    environment:
+      TZ: "Asia/Kuching"
+    volumes:
+      - ${DATA_DIR}/nginx-proxy-manager/config:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy_net
+networks:
+  proxy_net:
+    external: true
