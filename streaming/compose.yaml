@@ -6,6 +6,7 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
       - ${DATA_DIR}/jellyfin/config:/config
@@ -29,6 +30,7 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - UMASK=${UMASK}
       - TZ=${TZ}
     # ports:
       # - 5055:5055

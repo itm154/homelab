@@ -5,13 +5,14 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - UMASK=${UMASK}
       - TZ=${TZ}
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
       - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
     volumes:
       - ${DATA_DIR}/qbittorrent/config:/config
-      - ${MEDIA_DIR}/torrents:/data/torrents
+      - ${MEDIA_DIR}:/data 
     ports:
       # - 8080:8080
       - 6881:6881

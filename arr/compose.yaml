@@ -8,6 +8,7 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
       - ${DATA_DIR}/sonarr/config:/config
@@ -23,6 +24,7 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
       - ${DATA_DIR}/radarr/config:/config
@@ -38,6 +40,7 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
       -  ${DATA_DIR}/prowlarr/config:/config
