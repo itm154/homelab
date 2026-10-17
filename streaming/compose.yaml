@@ -1,0 +1,42 @@
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${DATA_DIR}/jellyfin/config:/config
+      - ${DATA_DIR}/jellyfin/cache:/cache
+      - ${MEDIA_DIR}/tv:/data/tv
+      - ${MEDIA_DIR}/movies:/data/movies
+      - ${MEDIA_DIR}/music:/data/music
+    ports:
+      - 8096:8096
+      # - 8920:8920 #optional
+      # - 7359:7359/udp #optional
+      # - 1900:1900/udp #optional
+    devices:
+      - /dev/dri:/dev/dri
+    networks:
+      - proxy_net
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    container_name: seerr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    # ports:
+      # - 5055:5055
+    volumes:
+      - ${DATA_DIR}/seerr/config:/app/config
+    restart: unless-stopped
+    networks:
+      - proxy_net
+networks:
+  proxy_net:
+    external: true
