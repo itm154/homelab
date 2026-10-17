@@ -11,9 +11,9 @@ services:
     volumes:
       - ${DATA_DIR}/jellyfin/config:/config
       - ${DATA_DIR}/jellyfin/cache:/cache
-      - ${MEDIA_DIR}/tv:/data/tv
-      - ${MEDIA_DIR}/movies:/data/movies
-      - ${MEDIA_DIR}/music:/data/music
+      - ${MEDIA_DIR}/media/tv:/data/tv
+      - ${MEDIA_DIR}/media/movies:/data/movies
+      - ${MEDIA_DIR}/media/music:/data/music
     ports:
       - 8096:8096
       # - 8920:8920 #optional
