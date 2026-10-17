@@ -1,0 +1,25 @@
+services:
+  fileflows:
+    container_name: fileflows
+    image: revenz/fileflows:stable
+    restart: unless-stopped
+    # ports:
+    #   - "19200:5000"
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${SCRATCH_DIR}/fileflows/temp:/temp
+      - ${DATA_DIR}/fileflows/config:/app/Data
+      - ${DATA_DIR}/fileflows/logs:/app/Logs
+      - ${MEDIA_DIR}/media:/media
+    networks:
+      - proxy_net
+networks:
+  proxy_net:
+    external: true
