@@ -40,6 +40,7 @@ services:
       USERMAP_GID: ${PGID}
       PAPERLESS_TIME_ZONE: ${TZ}
       PAPERLESS_OCR_LANGUAGE: eng
+      PAPERLESS_OCR_LANGUAGES: msa
       PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
       PAPERLESS_REDIS: redis://paperless-broker:6379
       PAPERLESS_DBHOST: paperless-db
