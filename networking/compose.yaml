@@ -10,10 +10,10 @@ services:
       - '443:443' # Public HTTPS Port
       - '81:81' # Admin Web Port
     environment:
-      TZ: "Asia/Kuching"
+      - TZ={TZ}
     volumes:
-      - ${DATA_DIR}/nginx-proxy-manager/config:/data
-      - ${DATA_DIR}/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - ${DOCKER_DIR}/nginx-proxy-manager/config:/data
+      - ${DOCKER_DIR}/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
     networks:
       - proxy_net
 networks:

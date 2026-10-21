@@ -1,0 +1,34 @@
+services:
+  crafty:
+    container_name: crafty
+    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=${UMASK}
+      - TZ=${TZ}
+    # ports:
+    #   - "8443:8443" # HTTPS
+    #   - "8123:8123" # DYNMAP
+    #   - "19132:19132/udp" # BEDROCK
+    #   - "25500-25600:25500-25600" # MC SERV PORT RANGE
+    volumes:
+      - ${DOCKER_DIR}/crafty/backups:/crafty/backups
+      - ${DOCKER_DIR}/crafty/logs:/crafty/logs
+      - ${DOCKER_DIR}/crafty/servers:/crafty/servers
+      - ${DOCKER_DIR}/crafty/config:/crafty/app/config
+      - ${DOCKER_DIR}/crafty/import:/crafty/import
+    networks:
+      - proxy_net
+  playit:
+    container_name: playit
+    image: ghcr.io/playit-cloud/playit-agent:1.0
+    environment:
+    - SECRET_KEY=${PLAYIT_SECRET_KEY}
+    networks:
+      - proxy_net
+    restart: unless-stopped
+networks:
+  proxy_net:
+    external: true

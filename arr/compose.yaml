@@ -11,7 +11,7 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ${DATA_DIR}/sonarr/config:/config
+      - ${DOCKER_DIR}/sonarr/config:/config
       - ${MEDIA_DIR}:/data
     networks:
       - proxy_net
@@ -27,7 +27,7 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ${DATA_DIR}/radarr/config:/config
+      - ${DOCKER_DIR}/radarr/config:/config
       - ${MEDIA_DIR}:/data
     networks:
       - proxy_net
@@ -43,7 +43,7 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      -  ${DATA_DIR}/prowlarr/config:/config
+      -  ${DOCKER_DIR}/prowlarr/config:/config
     networks:
       - proxy_net
 networks:

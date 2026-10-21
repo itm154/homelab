@@ -9,8 +9,8 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      - ${DATA_DIR}/jellyfin/config:/config
-      - ${DATA_DIR}/jellyfin/cache:/cache
+      - ${DOCKER_DIR}/jellyfin/config:/config
+      - ${DOCKER_DIR}/jellyfin/cache:/cache
       - ${MEDIA_DIR}/media/tv:/data/tv
       - ${MEDIA_DIR}/media/movies:/data/movies
       - ${MEDIA_DIR}/media/music:/data/music
@@ -35,7 +35,7 @@ services:
     # ports:
       # - 5055:5055
     volumes:
-      - ${DATA_DIR}/seerr/config:/app/config
+      - ${DOCKER_DIR}/seerr/config:/app/config
     restart: unless-stopped
     networks:
       - proxy_net

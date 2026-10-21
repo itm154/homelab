@@ -15,8 +15,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${SCRATCH_DIR}/fileflows/temp:/temp
-      - ${DATA_DIR}/fileflows/config:/app/Data
-      - ${DATA_DIR}/fileflows/logs:/app/Logs
+      - ${DOCKER_DIR}/fileflows/config:/app/Data
+      - ${DOCKER_DIR}/fileflows/logs:/app/Logs
       - ${MEDIA_DIR}/media:/media
     networks:
       - proxy_net

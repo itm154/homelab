@@ -1,25 +1,25 @@
 services:
-  # uptime-kuma:
-  #   image: louislam/uptime-kuma:2
-  #   container_name: uptime-kuma
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ${DATA_DIR}/uptime-kuma/config:/app/data
-  #   environment:
-  #     - TZ=${TZ}
-  #   healthcheck:
-  #     test: ["CMD", "extra/healthcheck"]
-  #     interval: 30s
-  #     timeout: 5s
-  #     retries: 3
-  #     start_period: 30s
-  #   logging:
-  #     driver: "json-file"
-  #     options:
-  #       max-size: "10m"
-  #       max-file: "3"
-  #   networks:
-  #     - proxy_net
+  uptime-kuma:
+    image: louislam/uptime-kuma:2
+    container_name: uptime-kuma
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_DIR}/uptime-kuma/config:/app/data
+    environment:
+      - TZ=${TZ}
+    healthcheck:
+      test: ["CMD", "extra/healthcheck"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - proxy_net
   scrutiny:
     image: ghcr.io/analogj/scrutiny:master-omnibus
     container_name: scrutiny
@@ -29,8 +29,8 @@ services:
       - SYS_ADMIN
     volumes:
       - /run/udev:/run/udev:ro
-      - ${DATA_DIR}/scrutiny/config:/opt/scrutiny/config
-      - ${DATA_DIR}/scrutiny/influxdb:/opt/scrutiny/influxdb
+      - ${DOCKER_DIR}/scrutiny/config:/opt/scrutiny/config
+      - ${DOCKER_DIR}/scrutiny/influxdb:/opt/scrutiny/influxdb
     devices:
       - /dev/nvme0n1:/dev/nvme0n1
     networks:
@@ -39,12 +39,12 @@ services:
     image: amir20/dozzle:latest
     container_name: dozzle
     restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ${DATA_DIR}/dozzle/config:/data
     environment:
       - TZ=${TZ}
       - DOZZLE_ENABLE_ACTIONS=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DOCKER_DIR}/dozzle/config:/data
     networks:
       - proxy_net
 networks:
