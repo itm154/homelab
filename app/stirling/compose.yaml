@@ -1,0 +1,20 @@
+services:
+  stirling-pdf:
+    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:latest-ultra-lite
+    container_name: stirling-pdf
+    # ports:
+    #   - '8080:8080'
+    volumes:
+      - ${DOCKER_DIR}/stirling/configs:/configs
+      - ${DOCKER_DIR}/stirling/logs:/logs
+      - ${DOCKER_DIR}/stirling/customFiles:/customFiles
+      - ${DOCKER_DIR}/stirling/pipeline:/pipeline
+      - ${DOCKER_DIR}/stirling/storage:/storage
+      - ${DOCKER_DIR}/stirling/tessdata:/usr/share/tessdata
+    mem_limit: 4g
+    restart: unless-stopped
+    networks:
+      - proxy_net
+networks:
+  proxy_net:
+    external: true
