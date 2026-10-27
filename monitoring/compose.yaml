@@ -1,19 +1,4 @@
 services:
-  scrutiny:
-    image: ghcr.io/analogj/scrutiny:master-omnibus
-    container_name: scrutiny
-    restart: unless-stopped
-    cap_add:
-      - SYS_RAWIO
-      - SYS_ADMIN
-    volumes:
-      - /run/udev:/run/udev:ro
-      - ${DOCKER_DIR}/scrutiny/config:/opt/scrutiny/config
-      - ${DOCKER_DIR}/scrutiny/influxdb:/opt/scrutiny/influxdb
-    devices:
-      - /dev/nvme0n1:/dev/nvme0n1
-    networks:
-      - proxy_net
   dozzle:
     image: amir20/dozzle:latest
     container_name: dozzle

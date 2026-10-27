@@ -12,7 +12,7 @@ services:
       - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
     volumes:
       - ${DOCKER_DIR}/qbittorrent/config:/config
-      - ${MEDIA_DIR}:/data 
+      - ${MEDIA_DIR}:/data
     ports:
       # - 8080:8080
       - 6881:6881

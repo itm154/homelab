@@ -43,7 +43,7 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     volumes:
-      -  ${DOCKER_DIR}/prowlarr/config:/config
+      - ${DOCKER_DIR}/prowlarr/config:/config
     networks:
       - proxy_net
 networks:

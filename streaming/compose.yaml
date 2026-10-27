@@ -33,7 +33,7 @@ services:
       - UMASK=${UMASK}
       - TZ=${TZ}
     # ports:
-      # - 5055:5055
+    # - 5055:5055
     volumes:
       - ${DOCKER_DIR}/seerr/config:/app/config
     restart: unless-stopped
