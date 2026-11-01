@@ -13,6 +13,12 @@ timeout: 120
 env_files:
   - ../.env
 ---
+name: arr
+working_dir: arr
+compose_files: [compose.yaml]
+env_files:
+  - ../.env
+---
 name: streaming
 working_dir: streaming
 compose_files: [compose.yaml]
