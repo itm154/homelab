@@ -24,6 +24,8 @@ services:
   playit:
     container_name: playit
     image: ghcr.io/playit-cloud/playit-agent:1.0
+    depends_on:
+      - crafty
     environment:
       - SECRET_KEY=${PLAYIT_SECRET_KEY}
     networks:
