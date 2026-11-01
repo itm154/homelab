@@ -1,0 +1,7 @@
+keys:
+  - &admin age1ggyfr8qqwk262xugkyen5uudxyz93yzp75gr6yn3dskwagtste2sh7uvpl
+creation_rules:
+  - path_regex: secrets.env$
+    key_groups:
+      - age:
+          - *admin

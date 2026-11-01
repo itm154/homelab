@@ -11,10 +11,13 @@ services:
       TZ: ${TZ}
       SELF_UPDATE_ENABLED: "true"
       SELF_UPDATE_STRATEGY: auto
+      SOPS_AGE_KEY_FILE: /run/secrets/sops-age-key
       POLL_CONFIG: |
         - url: https://github.com/itm154/homelab.git
-          reference: v2
+          reference: doco-cd
           interval: 300
+    secrets:
+      - sops-age-key
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${DOCKER_DIR}/doco-cd/data:/data
@@ -26,7 +29,8 @@ services:
       timeout: 5s
       start_period: 15s
       retries: 3
-      # secrets:
-      #   - git_access_token
+secrets:
+  sops-age-key:
+    file: /home/itm154/.config/sops/age/keys.txt
 volumes:
   data:

@@ -1,6 +1,5 @@
 /networking/letsencrypt
 *.pem
-/.env
 
 # Devenv
 .devenv*

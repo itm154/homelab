@@ -48,6 +48,7 @@ working_dir: app/paperless
 compose_files: [compose.yaml]
 env_files:
   - ../../.env
+  - ../../secrets.env
 ---
 name: stirling
 working_dir: app/stirling
@@ -60,3 +61,4 @@ working_dir: app/crafty
 compose_files: [compose.yaml]
 env_files:
   - ../../.env
+  - ../../secrets.env
