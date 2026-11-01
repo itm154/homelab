@@ -14,7 +14,7 @@ services:
       SOPS_AGE_KEY_FILE: /run/secrets/sops-age-key
       POLL_CONFIG: |
         - url: https://github.com/itm154/homelab.git
-          reference: doco-cd
+          reference: v2
           interval: 300
     secrets:
       - sops-age-key
