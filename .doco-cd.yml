@@ -65,6 +65,7 @@ env_files:
 name: minecraft-server
 working_dir: app/crafty
 compose_files: [compose.yaml]
+destroy: true
 env_files:
   - ../../.env
   - ../../secrets.env
