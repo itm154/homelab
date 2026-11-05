@@ -56,12 +56,6 @@ env_files:
   - ../../.env
   - ../../secrets.env
 ---
-name: stirling
-working_dir: app/stirling
-compose_files: [compose.yaml]
-env_files:
-  - ../../.env
----
 name: minecraft-server
 working_dir: app/crafty
 compose_files: [compose.yaml]
@@ -69,3 +63,7 @@ destroy: true
 env_files:
   - ../../.env
   - ../../secrets.env
+---
+name: bentopdf
+working_dir: app/bentopdf
+compose_files: [compose.yaml]

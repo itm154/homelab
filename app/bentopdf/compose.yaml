@@ -1,0 +1,10 @@
+services:
+  bentopdf:
+    image: ghcr.io/alam00000/bentopdf-simple:latest
+    container_name: bentopdf
+    restart: unless-stopped
+    networks:
+      - proxy_net
+networks:
+  proxy_net:
+    external: true
