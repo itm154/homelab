@@ -48,6 +48,7 @@ services:
       PAPERLESS_DBPASS: paperless
       PAPERLESS_URL: http://paperless.apollo.lab
       PAPERLESS_CSRF_TRUSTED_ORIGINS: http://paperless.itm154.com,https://paperless.itm154.com
+      PAPERLESS_ALLOWED_HOSTS: paperless.itm154.com
     networks:
       - proxy_net
 networks:
