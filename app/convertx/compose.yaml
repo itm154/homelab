@@ -1,0 +1,16 @@
+services:
+  convertx:
+    image: ghcr.io/c4illin/convertx
+    container_name: convertx
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_DIR}/convertx/data:/app/data
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - JWT_SECRET=${JWT_SECRET}
+    networks:
+      - proxy_net
+networks:
+  proxy_net:
+    external: true
