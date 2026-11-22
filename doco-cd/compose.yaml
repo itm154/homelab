@@ -2,7 +2,7 @@ services:
   doco-cd:
     # Pin by tag + digest and let Renovate open the bump PR.
     # A moving tag like "latest" turns every restart into an unreviewed upgrade.
-    image: ghcr.io/kimdre/doco-cd:0.131@sha256:88980c2e5dcfe8aabd97ca4003525653e5df41987cc75d94e7e09f8f6053c36f
+    image: ghcr.io/kimdre/doco-cd:0.136@sha256:55b13ff862bb98be7f36c88707ce5731d66434400bc3e3e48b263eab952ef7a0
     restart: unless-stopped
     # No container_name or host ports lets auto use scale_out for a
     # zero-downtime handover. If either is required, auto uses applier instead.
